@@ -16,6 +16,9 @@ Core stack:
 - Vuetify
 - Axios
 
+## Watch Website Tutorial
+https://drive.google.com/file/d/1zpIVVbLnlqybuoCWHytvI5TqBnrwvwNG/view?usp=sharing
+
 ## Implemented Features
 
 ### Public experience
