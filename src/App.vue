@@ -6,11 +6,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted } from 'vue'
+import { computed, defineAsyncComponent, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import AppLayout from '@/components/layout/AppLayout.vue'
 import { useAuthStore } from '@/stores/authStore'
 import { useLocaleStore } from '@/stores/localeStore'
+
+const AppLayout = defineAsyncComponent(() => import('@/components/layout/AppLayout.vue'))
 
 const route = useRoute()
 const authStore = useAuthStore()
