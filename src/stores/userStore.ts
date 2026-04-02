@@ -2,6 +2,7 @@ import { defineStore } from "pinia"
 import { AxiosError } from "axios"
 import userService from "@/services/userService"
 import type { User, UserFormInput } from "@/types/user"
+import { cloneMock, mockRoles, mockUsers } from "@/data/mockData"
 
 const createEmptyUserForm = (): UserFormInput => ({
   name: "",
@@ -52,6 +53,8 @@ export const useUserStore = defineStore("user", {
       try {
         const res = await userService.getUsers()
         this.users = getResponseCollection(res.data) as User[]
+      } catch (error) {
+        this.users = cloneMock(mockUsers)
       } finally {
         this.loading = false
       }
@@ -62,6 +65,8 @@ export const useUserStore = defineStore("user", {
       try {
         const res = await userService.getRoles()
         this.roles = normalizeRoleNames(getResponseCollection(res.data))
+      } catch (error) {
+        this.roles = cloneMock(mockRoles)
       } finally {
         this.rolesLoading = false
       }

@@ -1,5 +1,6 @@
 import { defineStore } from "pinia"
 import dashboardService from "@/services/dashboardService"
+import { cloneMock, mockDashboardData } from "@/data/mockData"
 
 type LowInventory = {
   quantity: number
@@ -40,6 +41,7 @@ export const useDashboardStore = defineStore("dashboard", {
         this.dashboardData = response.data.data
       } catch (error) {
         console.error("Failed to load dashboard data", error)
+        this.dashboardData = cloneMock(mockDashboardData)
       } finally {
         if (isRefresh) {
           this.refreshing = false

@@ -1,6 +1,7 @@
 import { defineStore } from "pinia"
 import warehouseService from "@/services/warehouseService"
 import type { Warehouse, WarehouseFormInput } from "@/types/warehouse"
+import { cloneMock, mockWarehouseProducts, mockWarehouses } from "@/data/mockData"
 
 const createEmptyWarehouseForm = (): WarehouseFormInput => ({
   name: "",
@@ -44,6 +45,8 @@ export const useWarehouseStore = defineStore("warehouse", {
             ? res.data
             : []
         this.warehouses = payload
+      } catch (error) {
+        this.warehouses = cloneMock(mockWarehouses)
       } finally {
         this.loading = false
       }
@@ -61,6 +64,8 @@ export const useWarehouseStore = defineStore("warehouse", {
             : []
 
         this.warehouseProducts = payload
+      } catch (error) {
+        this.warehouseProducts = cloneMock(mockWarehouseProducts[warehouseId] ?? [])
       } finally {
         this.productsLoading = false
       }

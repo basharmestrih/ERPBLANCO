@@ -1,6 +1,7 @@
 import { defineStore } from "pinia"
 import invoiceService from "@/services/invoiceService"
 import type { Invoice } from "@/types/invoice"
+import { cloneMock, mockInvoices } from "@/data/mockData"
 
 type InvoiceFilters = Partial<{
   status: string
@@ -35,6 +36,8 @@ export const useInvoiceStore = defineStore("invoice", {
             : []
 
         this.invoices = payload.length ? payload : []
+      } catch (error) {
+        this.invoices = cloneMock(mockInvoices)
       } finally {
         this.loading = false
       }

@@ -45,7 +45,7 @@
 
     <div class="settings-section">
       <h3 class="text-h5 font-weight-bold">
-        {{ t("settings.themetitle") }}
+        {{ t("settings.themetitle") }} (released soon)
       </h3>
       <p class="text-body-2 text-medium-emphasis mt-1">
         {{ t("settings.themesubtitle") }}

@@ -1,11 +1,10 @@
 import { defineStore } from "pinia"
 import categoryService from "@/services/categoryService"
 import type { ProductCategory } from "@/types/product"
+import { cloneMock, mockCategories } from "@/data/mockData"
 
 const defaultCategories: ProductCategory[] = [
-  { id: 1, name: "General" },
-  { id: 2, name: "Raw Materials" },
-  { id: 3, name: "Finished Goods" },
+  ...cloneMock(mockCategories),
 ]
 
 export const useCategoryStore = defineStore("category", {
@@ -24,6 +23,8 @@ export const useCategoryStore = defineStore("category", {
           : Array.isArray(res.data)
             ? res.data
             : defaultCategories
+      } catch (error) {
+        this.categories = cloneMock(defaultCategories)
       } finally {
         this.loading = false
       }

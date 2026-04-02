@@ -1,11 +1,10 @@
 import { defineStore } from "pinia"
 import unitService from "@/services/unitService"
 import type { ProductUnit } from "@/types/product"
+import { cloneMock, mockUnits } from "@/data/mockData"
 
 const defaultUnits: ProductUnit[] = [
-  { id: 1, name: "Pieces" },
-  { id: 2, name: "Kilograms" },
-  { id: 3, name: "Meters" },
+  ...cloneMock(mockUnits),
 ]
 
 export const useUnitStore = defineStore("unit", {
@@ -24,6 +23,8 @@ export const useUnitStore = defineStore("unit", {
           : Array.isArray(res.data)
             ? res.data
             : defaultUnits
+      } catch (error) {
+        this.units = cloneMock(defaultUnits)
       } finally {
         this.loading = false
       }

@@ -1,5 +1,6 @@
 import { defineStore } from "pinia"
 import stockMovementService from "@/services/stockMovementService"
+import { cloneMock, mockStockMovements } from "@/data/mockData"
 
 type StockMovementType = "in" | "out" | "adjustment"
 
@@ -92,7 +93,7 @@ export const useStockMovementStore = defineStore("stockMovement", {
 
         this.stockMovements = payload
       } catch (error) {
-        this.stockMovements = []
+        this.stockMovements = cloneMock(mockStockMovements)
       } finally {
         this.loading = false
       }

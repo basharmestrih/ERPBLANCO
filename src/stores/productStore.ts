@@ -1,6 +1,7 @@
 import { defineStore } from "pinia"
 import productService from "@/services/productService"
 import type { Product, ProductFormInput } from "@/types/product"
+import { cloneMock, mockProducts } from "@/data/mockData"
 
 const createEmptyProductForm = (): ProductFormInput => ({
   name: "",
@@ -24,6 +25,8 @@ export const useProductStore = defineStore("product", {
       try {
         const res = await productService.getProducts()
         this.products = Array.isArray(res.data) ? res.data : []
+      } catch (error) {
+        this.products = cloneMock(mockProducts)
       } finally {
         this.loading = false
       }

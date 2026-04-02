@@ -53,19 +53,16 @@
                 size="large"
                 class="login-button mb-4 mt-16"
                 block
-                
               >
                 {{ t("login.submit") }}
               </v-btn>
-              
 
-                <v-btn
-                @click="handleGuestLogin"
+              <v-btn
                 color="amber-darken-1"
                 size="large"
                 class="login-button"
                 block
-                :loading="authStore.loading"
+                @click="handleGuestLogin"
               >
                 {{ t("login.guest") }}
               </v-btn>
@@ -77,32 +74,6 @@
           <div class="image-placeholder" aria-hidden="true"></div>
         </section>
       </div>
-      <v-dialog v-model="showGuestDialog" max-width="450">
-  <v-card rounded="xl" class="pa-4">
-    
-    <v-card-title class="text-h6 font-weight-bold">
-      {{ t("guest.title") || "Welcome 👋" }}
-    </v-card-title>
-
-    <v-card-text>
-      {{
-        t("guest.message") ||
-        "You entered as admin user so you can explore all features and services on the platform."
-      }}
-    </v-card-text>
-
-    <v-card-actions class="justify-end">
-      <v-btn
-        color="amber-darken-2 font-weight-bold"
-        variant="flat"
-        @click="() => { showGuestDialog = false; router.push('/') }"
-      >
-        GO AHEAD
-      </v-btn>
-    </v-card-actions>
-
-  </v-card>
-</v-dialog>
     </v-main>
   </v-app>
 </template>
@@ -125,7 +96,6 @@ const form = reactive({
 const showPassword = ref(false)
 const errorMessage = ref("")
 const { t } = useLocale()
-const showGuestDialog = ref(false)
 
 const handleLogin = async () => {
   errorMessage.value = ""
@@ -139,22 +109,11 @@ const handleLogin = async () => {
   }
 }
 
-const handleGuestLogin = async () => {
+const handleGuestLogin = () => {
   errorMessage.value = ""
-
-  try {
-    await authStore.login("admin@example.com", "password123")
-    showGuestDialog.value = true
-
-  } catch (error) {
-    const axiosError = error as AxiosError<{ message?: string }>
-    errorMessage.value = axiosError.response?.data?.message ?? t("login.error")
-  }
+  authStore.enterGuestMode()
+  router.push("/")
 }
-
-
-
-
 </script>
 
 <style scoped>
@@ -198,10 +157,8 @@ const handleGuestLogin = async () => {
   padding: 32px;
   background:
     linear-gradient(rgba(10, 10, 10, 0.18), rgba(10, 10, 10, 0.18)),
-    url('/pexels-pavel-danilyuk-7658190.jpg') center center / cover no-repeat;
+    url("/pexels-pavel-danilyuk-7658190.jpg") center center / cover no-repeat;
 }
-
-
 
 .login-content :deep(.text-medium-emphasis) {
   color: rgba(226, 232, 240, 0.72) !important;

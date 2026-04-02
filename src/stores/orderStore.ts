@@ -1,5 +1,6 @@
 import { defineStore } from "pinia"
 import orderService from "@/services/orderService"
+import { cloneMock, mockOrders } from "@/data/mockData"
 
 interface OrderItem {
   product_id: number | null
@@ -46,6 +47,8 @@ export const useOrderStore = defineStore("order", {
       try {
         const res = await orderService.getOrders(nextFilters)
         this.orders = Array.isArray(res.data.data) ? res.data.data : []
+      } catch (error) {
+        this.orders = cloneMock(mockOrders)
       } finally {
         this.loading = false
       }

@@ -1,8 +1,11 @@
 import { defineStore } from "pinia"
 import authService from "@/services/authService"
+import { mockGuestUser } from "@/data/mockData"
 
 const TOKEN_KEY = "auth_token"
 const USER_ID = "user_id"
+const AUTH_MODE_KEY = "auth_mode"
+const GUEST_MODE = "guest"
 
 interface RoleItem {
   name?: string
@@ -53,8 +56,16 @@ export const useAuthStore = defineStore("auth", {
       localStorage.removeItem(TOKEN_KEY)
     },
 
+    setAuthMode(mode: string | null) {
+      if (mode) {
+        localStorage.setItem(AUTH_MODE_KEY, mode)
+        return
+      }
+
+      localStorage.removeItem(AUTH_MODE_KEY)
+    },
+
     setUser(user: AuthUser | null, roles: string[] = []) {
-      console.log('user data:', user) 
       if (user) {
         localStorage.setItem(USER_ID, String(user.id))
       } else {
@@ -62,8 +73,13 @@ export const useAuthStore = defineStore("auth", {
       }
       this.user = user
       this.roles = roles.length ? roles : normalizeRoles(user?.roles)
+    },
 
-
+    enterGuestMode() {
+      this.setAuthMode(GUEST_MODE)
+      this.setToken("guest-session")
+      this.setUser(mockGuestUser, ["Guest"])
+      this.initialized = true
     },
 
     async login(email: string, password: string) {
@@ -74,6 +90,7 @@ export const useAuthStore = defineStore("auth", {
         const data = response.data as LoginResponse
         const token = data.token ?? ""
 
+        this.setAuthMode(null)
         this.setToken(token)
         this.setUser(data.user ?? null)
         this.initialized = true
@@ -83,6 +100,13 @@ export const useAuthStore = defineStore("auth", {
     },
 
     async fetchCurrentUser() {
+      if (localStorage.getItem(AUTH_MODE_KEY) === GUEST_MODE) {
+        this.setToken(localStorage.getItem(TOKEN_KEY) ?? "guest-session")
+        this.setUser(mockGuestUser, ["Guest"])
+        this.initialized = true
+        return
+      }
+
       if (!this.token) {
         this.initialized = true
         return
@@ -99,6 +123,7 @@ export const useAuthStore = defineStore("auth", {
     },
 
     logout() {
+      this.setAuthMode(null)
       this.setToken("")
       this.setUser(null, [])
       this.initialized = true

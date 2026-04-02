@@ -1,6 +1,7 @@
 import { defineStore } from "pinia"
 import customerService from "@/services/customerService"
 import type { Customer, CustomerFormInput } from "@/types/customer"
+import { cloneMock, mockCustomers } from "@/data/mockData"
 
 const createEmptyCustomerForm = (): CustomerFormInput => ({
   name: "",
@@ -31,6 +32,8 @@ export const useCustomerStore = defineStore("customer", {
           : Array.isArray(res.data)
             ? res.data
             : []
+      } catch (error) {
+        this.customers = cloneMock(mockCustomers)
       } finally {
         this.loading = false
       }

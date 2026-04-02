@@ -36,7 +36,7 @@ router.beforeEach((to) => {
   const token = localStorage.getItem('auth_token')
 
   if (to.meta.requiresAuth && !token) {
-    return '/login'
+    return '/home'
   }
 
   if (to.meta.guestOnly && token) {
