@@ -1,9 +1,10 @@
 <template>
   <v-app-bar
-    color="transparent"
+    app
+    color="background"
     flat
     height="72"
-    :class="['px-8 border-b', { 'app-topbar--rtl': isRtl }]"
+    :class="['px-8 border-b app-topbar', { 'app-topbar--rtl': isRtl }]"
   >
     <div :class="['app-topbar__content', { 'app-topbar__content--rtl': isRtl }]">
       <v-toolbar-title :class="['text-h6 font-weight-bold tracking-tight app-topbar__title', { 'text-right': isRtl, 'text-left': !isRtl }]">
@@ -72,6 +73,14 @@ const userInitials = computed(() => {
 
 </script>
 <style scoped>
+.app-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1004;
+  background-color: rgb(var(--v-theme-background)) !important;
+
+}
+
 .lh-1 {
   line-height: 1.2;
 }
