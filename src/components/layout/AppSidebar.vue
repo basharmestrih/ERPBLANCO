@@ -87,7 +87,6 @@ const groupedMenu = [
     header: 'nav.system',
     items: [
       { icon: 'mdi-cog-outline', title: 'nav.settings', value: 'settings' },
-      { icon: 'mdi-help-circle-outline', title: 'nav.support', value: 'support' },
       { icon: 'mdi-logout', title: 'nav.logout', value: 'logout', isLogout: true },
     ]
   }
