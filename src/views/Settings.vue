@@ -2,7 +2,7 @@
   <section :class="['settings-page', { 'settings-page--rtl': isRtl }]">
 
 
-    <div class="settings-section mt-8">
+    <div class="settings-section mt-2">
       <h3 class="text-h5 font-weight-bold">
         {{ t("settings.langtitle") }}
       </h3>
@@ -34,7 +34,6 @@
             />
             <div class="ml-3">
               <div class="text-subtitle-2 font-weight-bold">{{ item.label }}</div>
-              <div class="text-caption text-medium-emphasis">{{ item.hint }}</div>
             </div>
           </div>
         </label>
@@ -107,7 +106,7 @@ const handleLocaleChange = (value: string | null) => {
 
 <style scoped>
 .settings-page {
-  padding: 24px;
+  padding:  2px 24px;
   max-width: 900px;
   margin: 0 auto;
 }
