@@ -12,16 +12,6 @@
       </v-toolbar-title>
 
       <div :class="['d-flex align-center app-topbar__actions', { 'app-topbar__actions--rtl': isRtl }]">
-        <v-btn icon variant="text" color="grey-darken-1" class="mx-1">
-          <v-icon size="22">mdi-email-outline</v-icon>
-          <v-tooltip activator="parent" location="bottom">{{ t("common.messages") }}</v-tooltip>
-        </v-btn>
-        <v-btn icon variant="text" color="grey-darken-1" class="mx-1">
-          <v-icon size="22">mdi-bell-outline</v-icon>
-          <v-badge color="error" dot offset-x="3" offset-y="3">
-            <v-tooltip activator="parent" location="bottom">{{ t("common.notifications") }}</v-tooltip>
-          </v-badge>
-        </v-btn>
         <v-btn icon variant="text" color="grey-darken-1" class="mx-1" to="/settings">
           <v-icon size="22">mdi-cog-outline</v-icon>
           <v-tooltip activator="parent" location="bottom">{{ t("common.settings") }}</v-tooltip>

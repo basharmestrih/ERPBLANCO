@@ -70,6 +70,7 @@ export const messages: Record<SupportedLocale, Record<string, MessageValue>> = {
     "route.customers": "Customers",
     "route.users": "Users",
     "route.reporting": "Reporting",
+    "route.payments": "Payments",
     "route.settings": "Settings",
     "settings.title": "Language & Region",
     "settings.subtitle":
@@ -358,6 +359,7 @@ export const messages: Record<SupportedLocale, Record<string, MessageValue>> = {
     "route.customers": "العملاء",
     "route.users": "المستخدمون",
     "route.reporting": "التقارير",
+    "route.payments": "المدفوعات",
     "route.settings": "الإعدادات",
     "settings.title": "اللغة والمنطقة",
     "settings.langtitle": "اللغة",
@@ -638,6 +640,7 @@ export const messages: Record<SupportedLocale, Record<string, MessageValue>> = {
     "route.customers": "Clients",
     "route.users": "Utilisateurs",
     "route.reporting": "Rapports",
+    "route.payments": "Paiements",
     "route.settings": "Paramètres",
     "settings.title": "Langue et région",
     "settings.langtitle": "Langue",

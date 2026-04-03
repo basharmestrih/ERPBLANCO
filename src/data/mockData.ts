@@ -178,6 +178,44 @@ export const mockOrders = [
   },
 ]
 
+type MockOrderFilters = Partial<{
+  status: string
+  date: string
+  created_by: string | number
+  low_quantity: number
+  high_quantity: number
+}>
+
+const isSameMockDay = (value: string | undefined, expectedDate: string) => {
+  if (!value) return false
+
+  return new Date(value).toISOString().slice(0, 10) === expectedDate
+}
+
+export const filterOrderCollection = <T extends typeof mockOrders[number]>(orders: T[], filters: MockOrderFilters = {}) =>
+  orders.filter((order) => {
+    if (filters.status && String(order.state).toLowerCase() !== String(filters.status).toLowerCase()) {
+      return false
+    }
+
+    if (filters.date && !isSameMockDay(order.created_at, filters.date)) {
+      return false
+    }
+
+    if (filters.low_quantity != null && Number(order.total_amount ?? 0) < Number(filters.low_quantity)) {
+      return false
+    }
+
+    if (filters.high_quantity != null && Number(order.total_amount ?? 0) > Number(filters.high_quantity)) {
+      return false
+    }
+
+    return true
+  })
+
+export const getMockOrders = (filters: MockOrderFilters = {}) =>
+  filterOrderCollection(cloneMock(mockOrders), filters)
+
 export const mockInvoices: Invoice[] = [
   {
     id: 1,

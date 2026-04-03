@@ -12,6 +12,7 @@ const routes = [
   { path: '/customers', name: 'Customers', component: () => import('@/views/Customers.vue'), meta: { requiresAuth: true, titleKey: 'route.customers' } },
   { path: '/users', name: 'Users', component: () => import('@/views/Users.vue'), meta: { requiresAuth: true, titleKey: 'route.users' } },
   { path: '/reporting', name: 'Reporting', component: () => import('@/views/Reporting.vue'), meta: { requiresAuth: true, titleKey: 'route.reporting' } },
+  { path: '/payments', name: 'Payments', component: () => import('@/views/Payments.vue'), meta: { requiresAuth: true, titleKey: 'route.payments' } },
   { path: '/settings', name: 'Settings', component: () => import('@/views/Settings.vue'), meta: { requiresAuth: true, titleKey: 'route.settings' } },
 ]
 

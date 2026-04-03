@@ -27,9 +27,6 @@
           <div class="text-body-2">{{ formatDate(item.created_at) }}</div>
         </template>
 
-        <template #item.actions="{ item }">
-          <v-btn icon="mdi-dots-vertical" variant="text" size="small" color="grey-darken-1"></v-btn>
-        </template>
       </EntityTableCard>
 
       <FormDialog
@@ -93,7 +90,6 @@ const headers = computed(() => [
   { title: t("products.header.price"), key: "price", align: "end" as const },
   { title: t("products.header.totalStock"), key: "total_quantity", align: "center" as const },
   { title: t("products.header.createdAt"), key: "created_at" },
-  { title: t("products.header.actions"), key: "actions", sortable: false, align: "end" as const },
 ])
 
 const formatPrice = (value?: string | number) =>

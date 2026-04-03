@@ -50,6 +50,7 @@
             img-src="https://images.pexels.com/photos/6169133/pexels-photo-6169133.jpeg"
             color="#952175"
             nav-icon="mdi-trending-up"
+            to="/orders"
           />
         </v-col>
 
@@ -60,6 +61,7 @@
             img-src="https://images.pexels.com/photos/6169643/pexels-photo-6169643.jpeg"
             color="#00897b"
             nav-icon="mdi-database"
+            to="/stock-movement"
           />
         </v-col>
 
@@ -70,6 +72,7 @@
             img-src="https://images.pexels.com/photos/6928880/pexels-photo-6928880.jpeg"
             color="#ef6c00"
             nav-icon="mdi-file-document"
+            to="/invoices"
           />
         </v-col>
 
@@ -80,6 +83,7 @@
             img-src="https://images.pexels.com/photos/13735971/pexels-photo-13735971.jpeg"
             color="#d32f2f"
             nav-icon="mdi-account-group"
+            to="/customers"
           />
         </v-col>
       </v-row>

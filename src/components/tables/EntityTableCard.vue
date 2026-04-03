@@ -18,25 +18,6 @@
 
       <div :class="['d-flex align-center ga-3 table-toolbar__actions', { 'table-toolbar__actions--rtl': isRtl }]">
          <slot name="top"></slot>
-        <v-btn 
-          color="white" 
-          prepend-icon="mdi-export-variant" 
-          variant="outlined" 
-          class="text-none border-opacity-25"
-          density="comfortable"
-        >
-          {{ t("table.export") }}
-        </v-btn>
-        
-        <v-btn 
-          color="white" 
-          prepend-icon="mdi-filter-variant" 
-          variant="tonal" 
-          class="text-none"
-          density="comfortable"
-        >
-          {{ t("table.filter") }}
-        </v-btn>
 
         <v-btn 
           v-if="showCreateButton"

@@ -60,9 +60,6 @@
           </div>
         </template>
 
-        <template #item.actions="{ item }">
-          <v-btn icon="mdi-dots-vertical" variant="text" size="small" color="grey-darken-1"></v-btn>
-        </template>
       </EntityTableCard>
     </div>
   </section>
@@ -120,7 +117,6 @@ const headers = computed(() => [
   { title: t('invoices.header.dueDate'), key: 'due_date', align: 'end' as const },
   { title: t('invoices.header.issuedAt'), key: 'issued_at', align: 'end' as const },
   { title: t('invoices.header.issuedBy'), key: 'issued_by', align: 'start' as const },
-  { title: t('invoices.header.actions'), key: 'actions', sortable: false, align: 'end' as const },
 ])
 
 const getStateColor = (state: string) => {

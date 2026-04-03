@@ -207,7 +207,7 @@ const filterChips = computed(() => [
   {
     title: t("orders.filter.bulk"),
     active: activeFilter.value === "bulk",
-    action: () => applyFilter("bulk", { low_quantity: 10 }),
+    action: () => applyFilter("bulk", { low_quantity: 1000 }),
   },
 ])
 

@@ -1,5 +1,5 @@
 <template>
-  <v-card :color="color" class="pa-4" max-width="500">
+  <v-card :color="color" :to="to" class="pa-4 dashboard-card" max-width="500" hover>
     <div :class="['d-flex align-center dashboard-card__content', { 'dashboard-card__content--rtl': isRtl }]">
       <div :class="['dashboard-card__text', { 'dashboard-card__text--rtl': isRtl }]">
         <v-card-title :class="['text-h5', { 'text-right': isRtl }]">{{ title }}</v-card-title>
@@ -29,12 +29,18 @@ defineProps<{
   imgSrc: string
   color?: string
   navIcon?: string
+  to?: string
 }>()
 
 const { isRtl } = useLocale()
 </script>
 
 <style scoped>
+.dashboard-card {
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
 .dashboard-card__content {
   gap: 1rem;
   justify-content: space-between;
@@ -65,8 +71,7 @@ const { isRtl } = useLocale()
   flex-shrink: 0;
 }
 
-.v-card:hover {
+.dashboard-card:hover {
   transform: scale(1.02);
-  transition: 0.3s;
 }
 </style>

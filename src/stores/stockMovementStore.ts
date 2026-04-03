@@ -52,6 +52,29 @@ type StockMovementFilters = Partial<{
   quantity: number
 }>
 
+const isSameDay = (value: string | undefined, expectedDate: string) => {
+  if (!value) return false
+
+  return new Date(value).toISOString().slice(0, 10) === expectedDate
+}
+
+const applyStockMovementFilters = (movements: StockMovement[], filters: StockMovementFilters = {}) =>
+  movements.filter((movement) => {
+    if (filters.type && movement.type !== filters.type) {
+      return false
+    }
+
+    if (filters.date && !isSameDay(movement.created_at, filters.date)) {
+      return false
+    }
+
+    if (filters.quantity != null && Number(movement.quantity ?? 0) < Number(filters.quantity)) {
+      return false
+    }
+
+    return true
+  })
+
 const createEmptyStockMovementForm = (): StockMovementFormInput => ({
   product_id: null,
   warehouse_id: null,
@@ -91,9 +114,9 @@ export const useStockMovementStore = defineStore("stockMovement", {
             ? res.data
             : []
 
-        this.stockMovements = payload
+        this.stockMovements = applyStockMovementFilters(payload, nextFilters)
       } catch (error) {
-        this.stockMovements = cloneMock(mockStockMovements)
+        this.stockMovements = applyStockMovementFilters(cloneMock(mockStockMovements), nextFilters)
       } finally {
         this.loading = false
       }
