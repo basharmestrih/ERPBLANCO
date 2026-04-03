@@ -12,7 +12,7 @@
         </v-card-actions>
       </div>
 
-      <v-avatar size="140" rounded="0" class="dashboard-card__media">
+      <v-avatar size="140" rounded="0" class="dashboard-card__media rounded-lg">
         <v-img :src="imgSrc" />
       </v-avatar>
     </div>

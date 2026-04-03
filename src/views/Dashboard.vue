@@ -47,7 +47,7 @@
           <DashboardCard
             :title="t('dashboard.ordersCardTitle')"
             :subtitle="t('dashboard.ordersCardSubtitle')"
-            img-src="https://cdn.vuetifyjs.com/images/cards/halcyon.png"
+            img-src="https://images.pexels.com/photos/6169133/pexels-photo-6169133.jpeg"
             color="#952175"
             nav-icon="mdi-trending-up"
           />
@@ -57,7 +57,7 @@
           <DashboardCard
             :title="t('dashboard.stockMovementsCardTitle')"
             :subtitle="t('dashboard.stockMovementsCardSubtitle')"
-            img-src="https://cdn.vuetifyjs.com/images/cards/halcyon.png"
+            img-src="https://images.pexels.com/photos/6169643/pexels-photo-6169643.jpeg"
             color="#00897b"
             nav-icon="mdi-database"
           />
@@ -67,7 +67,7 @@
           <DashboardCard
             :title="t('dashboard.invoicesCardTitle')"
             :subtitle="t('dashboard.invoicesCardSubtitle')"
-            img-src="https://cdn.vuetifyjs.com/images/cards/halcyon.png"
+            img-src="https://images.pexels.com/photos/6928880/pexels-photo-6928880.jpeg"
             color="#ef6c00"
             nav-icon="mdi-file-document"
           />
@@ -77,7 +77,7 @@
           <DashboardCard
             :title="t('dashboard.customersCardTitle')"
             :subtitle="t('dashboard.customersCardSubtitle')"
-            img-src="https://cdn.vuetifyjs.com/images/cards/halcyon.png"
+            img-src="https://images.pexels.com/photos/13735971/pexels-photo-13735971.jpeg"
             color="#d32f2f"
             nav-icon="mdi-account-group"
           />
